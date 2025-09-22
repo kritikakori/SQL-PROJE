@@ -1,0 +1,43 @@
+CREATE DATABASE StudentDB;
+USE StudentDB;
+-- Students Table
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    Gender VARCHAR(10),
+    Department VARCHAR(50)
+);
+
+
+CREATE TABLE Courses (
+    CourseID INT PRIMARY KEY,
+    CourseName VARCHAR(50),
+    Credits INT
+);
+
+CREATE TABLE Enrollments (
+    EnrollmentID INT PRIMARY KEY,
+    StudentID INT,
+    CourseID INT,
+    Grade CHAR(2),
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+    FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
+);
+sql
+Copy code
+INSERT INTO Students VALUES
+(1, 'Aman', 20, 'Male', 'Computer Science'),
+(2, 'Kritika', 21, 'Female', 'Mathematics'),
+(3, 'Rohit', 22, 'Male', 'Physics');
+
+INSERT INTO Courses VALUES
+(101, 'SQL Basics', 3),
+(102, 'Data Structures', 4),
+(103, 'Statistics', 3);
+
+INSERT INTO Enrollments VALUES
+(1, 1, 101, 'A'),
+(2, 1, 102, 'B'),
+(3, 2, 103, 'A'),
+(4, 3, 101, 'C');
